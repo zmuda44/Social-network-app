@@ -2,6 +2,11 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
+// const friendCount = async () => {
+//   const numberOfFriends = await User.aggregate()
+//   .count('')
+
+// }
 
 
 
@@ -26,12 +31,8 @@ module.exports = {
   async getUsers(req, res) {
     console.log("get request to users")
     try {
-      const users = await User.find();
-      const userObj = {
-        users,
-        // headCount: await headCount(),
-      };
-      return res.json(userObj);
+      const users = await User.find().select('-__v')
+      return res.json(users);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -44,7 +45,8 @@ module.exports = {
     try {
       const user = await User.findOne({ _id: req.params.userId })
         .select('-__v')
-        .lean();
+        .populate('thoughts')
+        .populate('friends')
 
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID' });
