@@ -32,7 +32,7 @@ module.exports = {
   //   // Add a thought to a user
   async addThoughtToUser(req, res) {
     console.log('You are adding a thought to a user');
-    console.log(req.params.userId);
+    console.log(req.body);
     try {
 
       const user = await User.findOneAndUpdate(

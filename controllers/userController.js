@@ -98,6 +98,40 @@ module.exports = {
     }
   },
 
+  // async getUserFriends (req, res) {
+  //   try {
+  //     const users = await User.find();
+  //     const userObj = {
+  //       users,
+  //       // headCount: await headCount(),
+  //     };
+  //     return res.json(userObj);
+  //   } catch (err) {
+  //     console.log(err);
+  //     return res.status(500).json(err);
+  //   }
+  // }
+
+  async addUserFriend (req, res) {
+    console.log(req.params.friendId)
+    try {
+      const user = await User.findOneAndUpdate(
+        {_id: req.params.userId},
+        { $addToSet: { friends: {_id: req.params.friendId} } }
+        // { runValidators: true, new: true }
+      );
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID' })
+      }
+      res.json(user);
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err);
+    }
+  }
+
 
 
 
