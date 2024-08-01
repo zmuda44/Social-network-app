@@ -3,8 +3,9 @@ const { Thought, User } = require('../models');
 //look for courses or courses
 
 module.exports = {
-  // Get all courses
+  // Get all thoughts
   async getThoughts(req, res) {
+    console.log("thought get")
     try {
       const courses = await Thought.find()
       .populate('thoughts');
@@ -13,7 +14,52 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Get a course
+
+  async createThought (req, res) {
+    console.log('create thought')
+    console.log(req.body)
+    console.log(Thought)
+    try {
+      const thought = await Thought.create(req.body);
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+
+
+  //   // Add a thought to a user
+  async addThoughtToUser(req, res) {
+    console.log('You are adding a thought to a user');
+    console.log(req.params.userId);
+    try {
+
+      const user = await User.findOneAndUpdate(
+        {_id: req.params.userId},
+        { $addToSet: { thoughts: req.body } }
+        // { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID' })
+      }
+
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+
+
+
+
+
+
+  // Get a thought
   // async getSingleThought(req, res) {
   //   try {
   //     const thoughts = await Thought.findOne({ _id: req.params.thoughtId })
@@ -28,16 +74,8 @@ module.exports = {
   //     res.status(500).json(err);
   //   }
   // },
-  // Create a course
-  async createThought(req, res) {
-    try {
-      const thought = await Thought.create(req.body);
-      res.json(course);
-    } catch (err) {
-      console.log(err);
-      return res.status(500).json(err);
-    }
-  },
+
+
  
   // async deleteThought(req, res) {
   //   try {

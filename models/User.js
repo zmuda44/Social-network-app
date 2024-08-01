@@ -15,14 +15,18 @@ const userSchema = new Schema(
       unique: true,
       // must match a valid email address (look into moongoose's validation)
     },
-    thoughts: [thoughtSchema]
-    // friends: [friendSchema]
+    thoughts: [
+      {type: Schema.Types.ObjectId,
+      ref: 'thought'
+      }
+    ]
+   
     
 
   },
   {
     toJSON: {
-        getters: true,
+        virtuals: true,
     }
     // id: false,
   }
