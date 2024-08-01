@@ -69,6 +69,20 @@ module.exports = {
     }
   },
 
+  async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body }
+      );
+      console.log(user)
+      res.send(user)
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.userId });
