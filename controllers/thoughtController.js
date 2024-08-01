@@ -14,20 +14,20 @@ module.exports = {
     }
   },
   // Get a course
-  async getSingleThought(req, res) {
-    try {
-      const thoughts = await Thought.findOne({ _id: req.params.thoughtId })
-      .populate('thoughts');
+  // async getSingleThought(req, res) {
+  //   try {
+  //     const thoughts = await Thought.findOne({ _id: req.params.thoughtId })
+  //     .populate('thoughts');
 
-      if (!thoughts) {
-        return res.status(404).json({ message: 'No thoughts with that ID' });
-      }
+  //     if (!thoughts) {
+  //       return res.status(404).json({ message: 'No thoughts with that ID' });
+  //     }
 
-      res.json(thought);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+  //     res.json(thought);
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // },
   // Create a course
   async createThought(req, res) {
     try {

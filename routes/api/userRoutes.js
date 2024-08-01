@@ -1,5 +1,8 @@
+// /users
+
 const router = require('express').Router();
 const {
+  seedUsers,
   getUsers,
   getSingleUser,
   createUser,
@@ -8,11 +11,13 @@ const {
   removeThought,
 } = require('../../controllers/UserController');
 
+// router.route('/seed').post(seedUsers)
+
 // /api/users
 router.route('/').get(getUsers).post(createUser);
 
 // /api/users/:userId
-router.route('/:userId').get(getSingleUser).delete(deleteUser);
+// router.route('/:userId').get(getSingleUser).delete(deleteUser);
 
 // /api/students/:studentId/assignments
 // router.route('/:userId/thoughts').post(addThought);

@@ -1,9 +1,9 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
+const thoughtSchema = require('./Thought')
 
 const userSchema = new Schema(
   {
-
-    userName: {
+    username: {
       type: String,
       unique: true,
       required: true,
@@ -15,33 +15,22 @@ const userSchema = new Schema(
       unique: true,
       // must match a valid email address (look into moongoose's validation)
     },
-    thoughts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'thought',
-      },
-    ],
-
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'user', 
-        // self reference
-      },
-    ],
-
-
+    thoughts: [thoughtSchema]
+    // friends: [friendSchema]
+    
 
   },
   {
     toJSON: {
-      getters: true,
-    },
-    id: false,
+        getters: true,
+    }
+    // id: false,
   }
 );
 
-module.exports = userSchema;
+const User = model('user', userSchema)
+
+module.exports = User;
 
 
 // assignmentId: {
@@ -57,3 +46,18 @@ module.exports = userSchema;
 //   minlength: 4,
 //   default: 'Unnamed assignment',
 // },
+
+
+    // thoughts: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'thought',
+    //   },
+    // ],
+    // friends: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'user', 
+    //     // self reference
+    //   },
+    // ],
