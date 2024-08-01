@@ -67,7 +67,8 @@ module.exports = {
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $set: req.body }
+        { $set: req.body },
+        { runValidators: true, new: true }
       );
       console.log(user)
       res.send(user)
