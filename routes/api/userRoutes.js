@@ -27,6 +27,9 @@ router.route('/:userId')
 // /api/users/:userId/friends
 // router.route('/:userId/friends').get(getUserFriends)
 
+// router.route('/:userId/friends')
+// .post(addUserFriend)
+
 router.route('/:userId/friends/:friendId')
 .post(addUserFriend)
 .delete(removeUserFriend)

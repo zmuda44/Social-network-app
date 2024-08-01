@@ -2,14 +2,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
-// const friendCount = async () => {
-//   const numberOfFriends = await User.aggregate()
-//   .count('')
-
-// }
-
-
-
 module.exports = {
 
   // async seedUsers(req, res) {
