@@ -13,7 +13,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      // must match a valid email address (look into moongoose's validation)
+      match: [/.+@.+\..+/, 'Must match an email address!'],
     },
     thoughts: [
       {type: Schema.Types.ObjectId,

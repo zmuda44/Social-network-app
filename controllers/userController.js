@@ -3,23 +3,8 @@ const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 module.exports = {
-
-  // async seedUsers(req, res) {
-  //   try {
-  //     await User.insertMany(
-  //       [
-  //         { "username": "Oh the Places We Will Go!" },
-  //         { "email": "Diary of Anne Frank" }
-  //       ]
-  //     )
-  //     // .then(results => res.json(results))
-  //   }
-  //     catch(err) {
-  //       console.log(err)
-  //     };
-  // };
   
-//   // Get all users
+// Get all users
   async getUsers(req, res) {
     console.log("get request to users")
     try {
@@ -51,8 +36,7 @@ module.exports = {
     }
   },
 
-
-//   // create a new user
+// Create a new user
   async createUser(req, res) {
     console.log(req.body)
     try {
@@ -146,10 +130,19 @@ module.exports = {
       res.status(500).json(err);
     }
   }, 
-
-
-
-
-
-
 };
+
+  // async seedUsers(req, res) {
+  //   try {
+  //     await User.insertMany(
+  //       [
+  //         { "username": "Oh the Places We Will Go!" },
+  //         { "email": "Diary of Anne Frank" }
+  //       ]
+  //     )
+  //     // .then(results => res.json(results))
+  //   }
+  //     catch(err) {
+  //       console.log(err)
+  //     };
+  // };
