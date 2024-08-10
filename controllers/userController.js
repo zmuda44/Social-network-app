@@ -47,6 +47,7 @@ module.exports = {
     }
   },
 
+  // Update a user
   async updateUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(
@@ -62,6 +63,7 @@ module.exports = {
     }
   },
 
+  // Delete a user
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.userId });
@@ -77,20 +79,7 @@ module.exports = {
     }
   },
 
-  // async getUserFriends (req, res) {
-  //   try {
-  //     const users = await User.find();
-  //     const userObj = {
-  //       users,
-  //       // headCount: await headCount(),
-  //     };
-  //     return res.json(userObj);
-  //   } catch (err) {
-  //     console.log(err);
-  //     return res.status(500).json(err);
-  //   }
-  // }
-
+  // Add a friend
   async addUserFriend (req, res) {
     console.log(req.params.friendId)
     try {
@@ -111,6 +100,7 @@ module.exports = {
     }
   }, 
 
+  // Remove a friend
   async removeUserFriend (req, res) {
     console.log(req.params.friendId)
     try {
@@ -132,17 +122,3 @@ module.exports = {
   }, 
 };
 
-  // async seedUsers(req, res) {
-  //   try {
-  //     await User.insertMany(
-  //       [
-  //         { "username": "Oh the Places We Will Go!" },
-  //         { "email": "Diary of Anne Frank" }
-  //       ]
-  //     )
-  //     // .then(results => res.json(results))
-  //   }
-  //     catch(err) {
-  //       console.log(err)
-  //     };
-  // };

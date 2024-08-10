@@ -44,31 +44,3 @@ const User = model('user', userSchema)
 module.exports = User;
 
 
-// assignmentId: {
-//   type: Schema.Types.ObjectId,
-//   default: () => new Types.ObjectId(),
-// },
-
-// userName: {
-//   type: String,
-//   unique: true,
-//   required: true,
-//   maxlength: 50,
-//   minlength: 4,
-//   default: 'Unnamed assignment',
-// },
-
-
-    // thoughts: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'thought',
-    //   },
-    // ],
-    // friends: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'user', 
-    //     // self reference
-    //   },
-    // ],

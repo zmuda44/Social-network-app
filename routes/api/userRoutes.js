@@ -13,8 +13,6 @@ const {
   removeUserFriend
 } = require('../../controllers/userController');
 
-// router.route('/seed').post(seedUsers)
-
 // /api/users
 router.route('/').get(getUsers).post(createUser);
 
@@ -25,11 +23,6 @@ router.route('/:userId')
 .delete(deleteUser);
 
 // /api/users/:userId/friends
-// router.route('/:userId/friends').get(getUserFriends)
-
-// router.route('/:userId/friends')
-// .post(addUserFriend)
-
 router.route('/:userId/friends/:friendId')
 .post(addUserFriend)
 .delete(removeUserFriend)

@@ -57,11 +57,7 @@ module.exports = {
     }
   },
 
-
-
-
-
- 
+  // Delete thought 
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
@@ -77,7 +73,7 @@ module.exports = {
     }
   },
 
-  
+  // Update thought
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -98,6 +94,7 @@ module.exports = {
     }
   },
 
+  // Add reaction
   async addReaction(req, res) {
     console.log(req.params.thoughtId)
     console.log(req.body);
@@ -121,6 +118,7 @@ module.exports = {
     }
   },
 
+  // Remove reaction
   async removeReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -140,5 +138,4 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
 };
